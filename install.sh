@@ -1,6 +1,5 @@
 #!/bin/bash
 
-wget -c https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt -O esm2m/esm2_t33_650M_UR50D.pt
-wget -c https://dl.fbaipublicfiles.com/fair-esm/regression/esm2_t33_650M_UR50D-contact-regression.pt -O esm2m/esm2_t33_650M_UR50D-contact-regression.pt
-
-
+cd esm2m
+chmod 777 ./download.sh
+bash ./download.sh
