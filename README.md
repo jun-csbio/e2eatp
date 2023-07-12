@@ -69,5 +69,9 @@ Index    AA    Prob.    State
 
 - First release     2023-07-12
 
+## Tips
+
+-<b>This package is only free for academic use</b>. If you have any question, please email Jun Hu: junh_cs@
+
 ## References
 [1] Bing Rao and Jun Hu. E2EATP: fast and high-accuracy protein-ATP Binding Residue Prediction via Protein Language Model Embedding. sumitted.
