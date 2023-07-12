@@ -264,8 +264,6 @@ if __name__ == '__main__':
     # Input parameters
     parser = argparse.ArgumentParser()
     parser.add_argument("-sf", "--savefolder")
-    parser.add_argument('-esm2m', "--esm2m")
-    parser.add_argument('-e2eatpm', "--e2eatpm")
     parser.add_argument("-seq_fa", "--seq_fa")
     parser.add_argument("-sind", "--start_index", type=int, default=0)
     parser.add_argument("-eind", "--end_index", type=int, default=-1)
@@ -280,15 +278,9 @@ if __name__ == '__main__':
     print_namespace(args)
     set_seed(2023)
     seq_fa = args.seq_fa
-    if args.esm2m is None:
-        esm2m = "{}/esm2m/esm2_t33_650M_UR50D.pt".format(os.path.abspath('.'))
-    else:
-        esm2m = args.esm2m
+    esm2m = "{}/esm2m/esm2_t33_650M_UR50D.pt".format(os.path.abspath('.'))
+    e2eatpm = "{}/e2eatpm/e2eatpm.pkl".format(os.path.abspath('.'))
 
-    if args.e2eatpm is None:
-        e2eatpm = "{}/e2eatpm/e2eatpm.pkl".format(os.path.abspath('.'))
-    else:
-        e2eatpm = args.e2eatpm
     savefolder = args.savefolder
     createFolder(savefolder)
     cutoff = args.prob_cutoff
