@@ -13,7 +13,7 @@ Identifying the ATP-binding sites of proteins is fundamentally important to unco
 
 ~~~
   $ cd e2eatp-main
-  $ chmod -R 777 ./install.sh
+  $ chmod 777 ./install.sh
   $ ./install.sh
 ~~~
 
