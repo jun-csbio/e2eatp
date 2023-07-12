@@ -17,7 +17,7 @@ Identifying the ATP-binding sites of proteins is fundamentally important to unco
   $ ./install.sh
 ~~~
 
-* If the package cannot directly work correct on your computational cluster, you should install the dependencies via running the following commands:
+* If the package cannot work correctly on your computational cluster, you should install the dependencies via running the following commands:
 
 ~~~
   $ cd e2eatp-main
