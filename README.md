@@ -25,7 +25,7 @@ A fast and high-accuracy protein-ATP binding residue prediction via protein lang
   $ pip install -r requirements.txt
 ~~~
 
-## Run
+## Run example
 ~~~
   $ python predict.py -sf example/results/ -seq_fa example/seq.fa
 ~~~
