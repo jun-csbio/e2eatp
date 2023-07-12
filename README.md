@@ -59,7 +59,7 @@ Index    AA    Prob.    State
 ~~~
 
 ## Predicted Database on Uniprot
-* If you have install this repository/package, you can find that there is a predicted ATP-binding residues database for all human proteins in UniProt.
+* If you have installed this package, you can find that there is a predicted ATP-binding residues database for all human proteins in UniProt.
 
 ~~~
   $ cd e2eatp-main/uniprot/
