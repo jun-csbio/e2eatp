@@ -33,6 +33,13 @@ Identifying the ATP-binding sites of proteins is fundamentally important to unco
 
 * The prediction result of E2EATP for each protein (e.g., 5DN1A) in your input fasta file (-seq_fa) could be found in the folder which you input as '-sf'.
 
+## Predicted Database on Uniprot
+* If you have install this repository/package, you can find that there is a predicted ATP-binding residues database for all human proteins in UniProt.
+
+~~~
+  $ cd e2eatp-main/uniprot/
+~~~
+
 ## Update History:
 
 - First release     2023-07-12
