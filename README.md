@@ -15,9 +15,6 @@ Identifying the ATP-binding sites of proteins is fundamentally important to unco
   $ cd e2eatp-main
   $ chmod -R 777 ./install.sh
   $ ./install.sh
-  $ java -jar FileUnion.jar ./uniprot/humain/ ./uniprot/uniprot_human_2023_07_10.tar.gz
-  $ rm -rf ./uniprot/humain/
-  $ tar zxvf ./uniprot/uniprot_human_2023_07_10.tar.gz
 ~~~
 
 * If the package cannot directly work correct on your computational cluster, you should install the dependencies via running the following commands:
