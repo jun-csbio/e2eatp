@@ -91,10 +91,6 @@ class JSeq2ESM2:
         self.emb_dim = self.esm2.embed_dim
         self.layer_num = self.esm2.num_layers
 
-        self.prot_zoom = None
-        self.attn_zoom = None
-        self.attn_dim = None
-
     def tokenize(self, seq):
         """
         :param tuple_list: e.g., [('seq1', 'FFFFF'), ('seq2', 'AAASDA')]
@@ -307,7 +303,7 @@ if __name__ == '__main__':
         checkpoint = torch.load(e2eatpm, map_location=device)
         state_dict = checkpoint['model']
 
-        # due to the module of body2, body3, and weights is not used in the function of forward we reduce them
+        # due to the module of body2, body3, and weights is not used in the function of forward, we reduce them
         for key in list(state_dict.keys()):
             if key.startswith('body2') or key.startswith('body3') or key.startswith('weights'):
                 del state_dict[key]
