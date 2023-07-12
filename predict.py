@@ -150,27 +150,10 @@ class CoreModel(nn.Module):
                 nn.BatchNorm1d(128),
             ) for _ in range(body_num)
         ])
-        self.body2 = nn.ModuleList([
-            nn.Sequential(
-                nn.Conv1d(128, 256, kernel_size=3, padding=1),
-                nn.Conv1d(256, 128, kernel_size=3, padding=1),
-                nn.GELU(),
-                nn.BatchNorm1d(128),
-            ) for _ in range(body_num)
-        ])
-        self.body3 = nn.ModuleList([
-            nn.Sequential(
-                nn.Conv1d(128, 256, kernel_size=5, padding=1),
-                nn.Conv1d(256, 128, kernel_size=5, padding=1),
-                nn.GELU(),
-                nn.BatchNorm1d(128),
-            ) for _ in range(body_num)
-        ])
         self.bn_list = nn.ModuleList([
             nn.BatchNorm1d(128) for _ in range(body_num)
         ])
         self.dropout = nn.Dropout(p=dr)
-        self.weights = nn.Parameter(1./3*torch.ones(body_num, 3))
 
         self.tail = nn.Sequential(
             nn.Conv1d(128, 64, kernel_size=3, padding=1),
@@ -190,10 +173,7 @@ class CoreModel(nn.Module):
         x = self.conv(x)
         for bind in range(self.body_num):
             x1 = self.body1[bind](x)
-            x2 = self.body1[bind](x)
-            x3 = self.body1[bind](x)
-            w = torch.softmax(self.weights[bind], dim=-1)
-            x = self.bn_list[bind](x + (w[0]*x1 + w[1]*x2 + w[2]*x3))
+            x = self.bn_list[bind](x + x1)
         x = self.dropout(x)
         x = self.tail(x).transpose(-1, -2).contiguous()
         return torch.softmax(x, dim=-1)
@@ -325,7 +305,14 @@ if __name__ == '__main__':
     core_model = load_model()
     if os.path.exists(e2eatpm):
         checkpoint = torch.load(e2eatpm, map_location=device)
-        core_model.load_state_dict(checkpoint['model'])
+        state_dict = checkpoint['model']
+
+        # due to the module of body2, body3, and weights is not used in the function of forward we reduce them
+        for key in list(state_dict.keys()):
+            if key.startswith('body2') or key.startswith('body3') or key.startswith('weights'):
+                del state_dict[key]
+
+        core_model.load_state_dict(state_dict)
     model = JModel(core_model).to(device)
 
     seq_dict = loadFasta(seq_fa)
