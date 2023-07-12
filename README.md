@@ -30,9 +30,9 @@ A fast and high-accuracy protein-ATP binding residue prediction via protein lang
   $ python predict.py -sf example/results/ -seq_fa example/seq.fa
 ~~~
 
-## The docking result
+## Result
 
-*The docking result of each pocket should be found in the outputted folder, i.e., "ATPx", where "x" is the pocket index number. In each "ATPx" folder, the ATP docking pose could be found in the file of "final.pdb".
+* The prediction result of E2EATP for each protein (e.g., 5DN1A) in your input fasta file (-seq_fa) could be found in the folder which you input as '-sf'.
 
 ## Update History:
 
