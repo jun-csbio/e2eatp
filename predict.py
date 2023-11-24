@@ -302,6 +302,7 @@ if __name__ == '__main__':
 
         core_model.load_state_dict(state_dict)
     model = JModel(core_model).to(device)
+    model.eval()
 
     seq_dict = loadFasta(seq_fa)
 
